@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students - LearnHub LMS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">
+                <i class="fas fa-graduation-cap"></i>
+                LearnHub
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="videos.html" class="nav-link">My Courses</a></li>
+                <li><a href="video-upload.html" class="nav-link">Upload</a></li>
+                <li><a href="certificates.html" class="nav-link">Certificates</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <div class="search-bar" style="margin-right: 1rem;">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search students...">
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar" id="userAvatar">JS</div>
+                    <div class="user-dropdown">
+                        <a href="students.html"><i class="fas fa-user"></i> My Profile</a>
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <p class="sidebar-menu-title">Main Menu</p>
+                <a href="dashboard.html" class="sidebar-link">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+                <a href="videos.html" class="sidebar-link">
+                    <i class="fas fa-play-circle"></i>
+                    My Courses
+                </a>
+                <a href="video-upload.html" class="sidebar-link">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    Upload Video
+                </a>
+                <a href="certificates.html" class="sidebar-link">
+                    <i class="fas fa-certificate"></i>
+                    Certificates
+                </a>
+
+                <p class="sidebar-menu-title">Management</p>
+                <a href="students.html" class="sidebar-link active">
+                    <i class="fas fa-users"></i>
+                    Students
+                </a>
+                <a href="#" class="sidebar-link">
+                    <i class="fas fa-book"></i>
+                    Courses
+                </a>
+                <a href="#" class="sidebar-link">
+                    <i class="fas fa-chart-bar"></i>
+                    Analytics
+                </a>
+
+                <p class="sidebar-menu-title">Account</p>
+                <a href="students.html" class="sidebar-link">
+                    <i class="fas fa-user-cog"></i>
+                    Profile Settings
+                </a>
+                <a href="#" class="sidebar-link">
+                    <i class="fas fa-question-circle"></i>
+                    Help Center
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Profile Section -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-body">
+                    <div style="display: flex; gap: 2rem; align-items: flex-start;">
+                        <div style="text-align: center;">
+                            <div style="width: 120px; height: 120px; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; font-weight: 700; margin-bottom: 1rem;" id="profileAvatar">
+                                JS
+                            </div>
+                            <button class="btn btn-sm btn-outline">
+                                <i class="fas fa-camera"></i>
+                                Change Photo
+                            </button>
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                <div>
+                                    <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;" id="profileName">John Smith</h2>
+                                    <p style="color: var(--gray-500);" id="profileEmail">john.smith@email.com</p>
+                                    <span class="status-badge active" style="margin-top: 0.5rem;">Student</span>
+                                </div>
+                                <button class="btn btn-primary" onclick="openEditModal()">
+                                    <i class="fas fa-edit"></i>
+                                    Edit Profile
+                                </button>
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 1.5rem;">
+                                <div>
+                                    <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);">12</h3>
+                                    <p style="color: var(--gray-500); font-size: 0.9rem;">Courses Enrolled</p>
+                                </div>
+                                <div>
+                                    <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--success-color);">5</h3>
+                                    <p style="color: var(--gray-500); font-size: 0.9rem;">Completed</p>
+                                </div>
+                                <div>
+                                    <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--secondary-color);">48h</h3>
+                                    <p style="color: var(--gray-500); font-size: 0.9rem;">Learning Time</p>
+                                </div>
+                                <div>
+                                    <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--warning-color);">3</h3>
+                                    <p style="color: var(--gray-500); font-size: 0.9rem;">Certificates</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="details">Personal Details</button>
+                <button class="tab-btn" data-tab="courses">Enrolled Courses</button>
+                <button class="tab-btn" data-tab="all-students">All Students</button>
+            </div>
+
+            <!-- Personal Details Tab -->
+            <div class="tab-content active" id="details-tab">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 style="font-size: 1.25rem; font-weight: 600;">Personal Information</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="profileForm">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                                <div class="form-group">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" value="John">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" value="Smith">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" value="john.smith@email.com">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone" value="+1 234 567 890">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Date of Birth</label>
+                                    <input type="date" class="form-control" id="dob" value="1995-06-15">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Gender</label>
+                                    <select class="form-control" id="gender">
+                                        <option value="male" selected>Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                        <option value="prefer-not">Prefer not to say</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-top: 1.5rem;">
+                                <label class="form-label">Address</label>
+                                <input type="text" class="form-control" id="address" value="123 Learning Street, Education City">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Bio</label>
+                                <textarea class="form-control" id="bio" rows="3" placeholder="Tell us about yourself...">Passionate learner interested in web development and data science. Always excited to learn new technologies.</textarea>
+                            </div>
+                            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i>
+                                    Save Changes
+                                </button>
+                                <button type="button" class="btn btn-outline">
+                                    Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Education & Skills -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 style="font-size: 1.25rem; font-weight: 600;">Education</h2>
+                        </div>
+                        <div class="card-body">
+                            <div style="border-left: 2px solid var(--primary-color); padding-left: 1rem; margin-bottom: 1.5rem;">
+                                <h4 style="font-weight: 600;">Bachelor of Computer Science</h4>
+                                <p style="color: var(--gray-500); font-size: 0.9rem;">Stanford University</p>
+                                <p style="color: var(--gray-400); font-size: 0.85rem;">2013 - 2017</p>
+                            </div>
+                            <div style="border-left: 2px solid var(--secondary-color); padding-left: 1rem;">
+                                <h4 style="font-weight: 600;">High School Diploma</h4>
+                                <p style="color: var(--gray-500); font-size: 0.9rem;">Lincoln High School</p>
+                                <p style="color: var(--gray-400); font-size: 0.85rem;">2009 - 2013</p>
+                            </div>
+                            <button class="btn btn-sm btn-outline" style="margin-top: 1rem;">
+                                <i class="fas fa-plus"></i>
+                                Add Education
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 style="font-size: 1.25rem; font-weight: 600;">Skills</h2>
+                        </div>
+                        <div class="card-body">
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                                <span style="background: rgba(99, 102, 241, 0.1); color: var(--primary-color); padding: 0.375rem 0.75rem; border-radius: 9999px; font-size: 0.85rem;">HTML/CSS</span>
+                                <span style="background: rgba(99, 102, 241, 0.1); color: var(--primary-color); padding: 0.375rem 0.75rem; border-radius: 9999px; font-size: 0.85rem;">JavaScript</span>
+                                <span style="background: rgba(99, 102, 241, 0.1); color: var(--primary-color); padding: 0.375rem 0.75rem; border-radius: 9999px; font-size: 0.85rem;">Python</span>
+                                <span style="background: rgba(99, 102, 241, 0.1); color: var(--primary-color); padding: 0.375rem 0.75rem; border-radius: 9999px; font-size: 0.85rem;">React</span>
+                                <span style="background: rgba(99, 102, 241, 0.1); color: var(--primary-color); padding: 0.375rem 0.75rem; border-radius: 9999px; font-size: 0.85rem;">Node.js</span>
+                                <span style="background: rgba(99, 102, 241, 0.1); color: var(--primary-color); padding: 0.375rem 0.75rem; border-radius: 9999px; font-size: 0.85rem;">SQL</span>
+                                <span style="background: rgba(99, 102, 241, 0.1); color: var(--primary-color); padding: 0.375rem 0.75rem; border-radius: 9999px; font-size: 0.85rem;">UI/UX Design</span>
+                            </div>
+                            <button class="btn btn-sm btn-outline">
+                                <i class="fas fa-plus"></i>
+                                Add Skill
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enrolled Courses Tab -->
+            <div class="tab-content" id="courses-tab">
+                <div class="courses-grid">
+                    <div class="course-card">
+                        <div class="course-thumbnail" style="height: 150px;">
+                            <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=200&fit=crop" alt="Web Development">
+                        </div>
+                        <div class="course-content">
+                            <span class="course-category">Web Development</span>
+                            <h3 class="course-title">Complete Web Development Bootcamp</h3>
+                            <div class="course-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 65%;"></div>
+                                </div>
+                                <span class="progress-text">65% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-thumbnail" style="height: 150px;">
+                            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=200&fit=crop" alt="Python">
+                        </div>
+                        <div class="course-content">
+                            <span class="course-category">Data Science</span>
+                            <h3 class="course-title">Python for Data Science</h3>
+                            <div class="course-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 40%;"></div>
+                                </div>
+                                <span class="progress-text">40% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-thumbnail" style="height: 150px;">
+                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=200&fit=crop" alt="UI/UX">
+                        </div>
+                        <div class="course-content">
+                            <span class="course-category">Design</span>
+                            <h3 class="course-title">UI/UX Design Masterclass</h3>
+                            <div class="course-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 25%;"></div>
+                                </div>
+                                <span class="progress-text">25% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- All Students Tab -->
+            <div class="tab-content" id="all-students-tab">
+                <div class="table-container">
+                    <div class="table-header">
+                        <h2 class="table-title">All Students</h2>
+                        <div class="table-actions">
+                            <div class="search-bar">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="Search students...">
+                            </div>
+                            <button class="btn btn-primary btn-sm">
+                                <i class="fas fa-plus"></i>
+                                Add Student
+                            </button>
+                        </div>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Email</th>
+                                <th>Courses</th>
+                                <th>Progress</th>
+                                <th>Status</th>
+                                <th>Joined</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="table-avatar">
+                                        <div class="table-user-info">
+                                            <h4>John Smith</h4>
+                                            <p>Student</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>john.smith@email.com</td>
+                                <td>12</td>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <div class="progress-bar" style="width: 100px; height: 6px;">
+                                            <div class="progress-fill" style="width: 65%;"></div>
+                                        </div>
+                                        <span style="font-size: 0.85rem; color: var(--gray-500);">65%</span>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>Jan 15, 2024</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" style="margin-right: 0.5rem;"><i class="fas fa-eye"></i></button>
+                                    <button class="btn btn-sm btn-outline" style="margin-right: 0.5rem;"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="table-avatar">
+                                        <div class="table-user-info">
+                                            <h4>Sarah Johnson</h4>
+                                            <p>Student</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>sarah.j@email.com</td>
+                                <td>8</td>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <div class="progress-bar" style="width: 100px; height: 6px;">
+                                            <div class="progress-fill" style="width: 80%;"></div>
+                                        </div>
+                                        <span style="font-size: 0.85rem; color: var(--gray-500);">80%</span>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>Jan 10, 2024</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" style="margin-right: 0.5rem;"><i class="fas fa-eye"></i></button>
+                                    <button class="btn btn-sm btn-outline" style="margin-right: 0.5rem;"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="User" class="table-avatar">
+                                        <div class="table-user-info">
+                                            <h4>Mike Chen</h4>
+                                            <p>Student</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>mike.chen@email.com</td>
+                                <td>15</td>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <div class="progress-bar" style="width: 100px; height: 6px;">
+                                            <div class="progress-fill" style="width: 92%;"></div>
+                                        </div>
+                                        <span style="font-size: 0.85rem; color: var(--gray-500);">92%</span>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>Dec 28, 2023</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" style="margin-right: 0.5rem;"><i class="fas fa-eye"></i></button>
+                                    <button class="btn btn-sm btn-outline" style="margin-right: 0.5rem;"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User" class="table-avatar">
+                                        <div class="table-user-info">
+                                            <h4>Emily Brown</h4>
+                                            <p>Student</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>emily.b@email.com</td>
+                                <td>6</td>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <div class="progress-bar" style="width: 100px; height: 6px;">
+                                            <div class="progress-fill" style="width: 45%;"></div>
+                                        </div>
+                                        <span style="font-size: 0.85rem; color: var(--gray-500);">45%</span>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge pending">Pending</span></td>
+                                <td>Jan 20, 2024</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" style="margin-right: 0.5rem;"><i class="fas fa-eye"></i></button>
+                                    <button class="btn btn-sm btn-outline" style="margin-right: 0.5rem;"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="User" class="table-avatar">
+                                        <div class="table-user-info">
+                                            <h4>David Wilson</h4>
+                                            <p>Student</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>david.w@email.com</td>
+                                <td>10</td>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <div class="progress-bar" style="width: 100px; height: 6px;">
+                                            <div class="progress-fill" style="width: 30%;"></div>
+                                        </div>
+                                        <span style="font-size: 0.85rem; color: var(--gray-500);">30%</span>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge inactive">Inactive</span></td>
+                                <td>Dec 15, 2023</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" style="margin-right: 0.5rem;"><i class="fas fa-eye"></i></button>
+                                    <button class="btn btn-sm btn-outline" style="margin-right: 0.5rem;"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="pagination-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal-overlay" id="editModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Edit Profile</h3>
+                <button class="modal-close" onclick="closeEditModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="editProfileForm">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="editName" value="John Smith">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" id="editEmail" value="john.smith@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone</label>
+                        <input type="tel" class="form-control" id="editPhone" value="+1 234 567 890">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeEditModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveProfile()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Check if user is logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const userName = localStorage.getItem('userName') || 'John Smith';
+            const userEmail = localStorage.getItem('userEmail') || 'john.smith@email.com';
+            
+            if (!isLoggedIn) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            document.getElementById('userAvatar').textContent = userName.substring(0, 2).toUpperCase();
+            document.getElementById('profileAvatar').textContent = userName.substring(0, 2).toUpperCase();
+            document.getElementById('profileName').textContent = userName;
+            document.getElementById('profileEmail').textContent = userEmail;
+        });
+
+        // Tabs functionality
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                this.classList.add('active');
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId + '-tab').classList.add('active');
+            });
+        });
+
+        // Modal functions
+        function openEditModal() {
+            document.getElementById('editModal').classList.add('active');
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').classList.remove('active');
+        }
+
+        function saveProfile() {
+            const name = document.getElementById('editName').value;
+            const email = document.getElementById('editEmail').value;
+            
+            localStorage.setItem('userName', name);
+            localStorage.setItem('userEmail', email);
+            
+            document.getElementById('profileName').textContent = name;
+            document.getElementById('profileEmail').textContent = email;
+            document.getElementById('profileAvatar').textContent = name.substring(0, 2).toUpperCase();
+            document.getElementById('userAvatar').textContent = name.substring(0, 2).toUpperCase();
+            
+            closeEditModal();
+            alert('Profile updated successfully!');
+        }
+
+        // Form submission
+        document.getElementById('profileForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Profile information saved successfully!');
+        });
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - LearnHub LMS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">
+                <i class="fas fa-graduation-cap"></i>
+                LearnHub
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+                <li><a href="videos.html" class="nav-link">My Courses</a></li>
+                <li><a href="video-upload.html" class="nav-link">Upload</a></li>
+                <li><a href="certificates.html" class="nav-link">Certificates</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <div class="search-bar" style="margin-right: 1rem;">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search courses...">
+                </div>
+                <button class="btn btn-icon" style="background: var(--gray-100);">
+                    <i class="fas fa-bell"></i>
+                </button>
+                <div class="user-menu">
+                    <div class="user-avatar" id="userAvatar">JS</div>
+                    <div class="user-dropdown">
+                        <a href="students.html"><i class="fas fa-user"></i> My Profile</a>
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <p class="sidebar-menu-title">Main Menu</p>
+                <a href="dashboard.html" class="sidebar-link active">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+                <a href="videos.html" class="sidebar-link">
+                    <i class="fas fa-play-circle"></i>
+                    My Courses
+                </a>
+                <a href="video-upload.html" class="sidebar-link">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    Upload Video
+                </a>
+                <a href="certificates.html" class="sidebar-link">
+                    <i class="fas fa-certificate"></i>
+                    Certificates
+                    <span class="badge">3</span>
+                </a>
+
+                <p class="sidebar-menu-title">Management</p>
+                <a href="students.html" class="sidebar-link">
+                    <i class="fas fa-users"></i>
+                    Students
+                </a>
+                <a href="#" class="sidebar-link">
+                    <i class="fas fa-book"></i>
+                    Courses
+                </a>
+                <a href="#" class="sidebar-link">
+                    <i class="fas fa-chart-bar"></i>
+                    Analytics
+                </a>
+
+                <p class="sidebar-menu-title">Account</p>
+                <a href="students.html" class="sidebar-link">
+                    <i class="fas fa-user-cog"></i>
+                    Profile Settings
+                </a>
+                <a href="#" class="sidebar-link">
+                    <i class="fas fa-question-circle"></i>
+                    Help Center
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">Welcome back, <span id="userName">Student</span>!</h1>
+                <p class="page-subtitle">Here's what's happening with your learning today.</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon primary">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>12</h3>
+                        <p>Enrolled Courses</p>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 2 new this month
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon secondary">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>48h</h3>
+                        <p>Learning Hours</p>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 8h this week
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon success">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>5</h3>
+                        <p>Completed Courses</p>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 1 this month
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon warning">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>3</h3>
+                        <p>Certificates Earned</p>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 1 new
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Continue Learning Section -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-header flex-between">
+                    <h2 style="font-size: 1.25rem; font-weight: 600;">Continue Learning</h2>
+                    <a href="videos.html" class="btn btn-sm btn-outline">View All</a>
+                </div>
+                <div class="card-body">
+                    <div class="courses-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+                        <!-- Course 1 -->
+                        <div class="course-card" style="box-shadow: none; border: 1px solid var(--gray-200);">
+                            <div class="course-thumbnail" style="height: 140px;">
+                                <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=200&fit=crop" alt="Web Development">
+                            </div>
+                            <div class="course-content">
+                                <span class="course-category">Web Development</span>
+                                <h3 class="course-title">Complete Web Development Bootcamp</h3>
+                                <div class="course-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 65%;"></div>
+                                    </div>
+                                    <span class="progress-text">65% Complete</span>
+                                </div>
+                                <a href="#" class="btn btn-primary btn-sm" style="width: 100%;">
+                                    <i class="fas fa-play"></i> Continue
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Course 2 -->
+                        <div class="course-card" style="box-shadow: none; border: 1px solid var(--gray-200);">
+                            <div class="course-thumbnail" style="height: 140px;">
+                                <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=200&fit=crop" alt="Python">
+                            </div>
+                            <div class="course-content">
+                                <span class="course-category">Data Science</span>
+                                <h3 class="course-title">Python for Data Science</h3>
+                                <div class="course-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 40%;"></div>
+                                    </div>
+                                    <span class="progress-text">40% Complete</span>
+                                </div>
+                                <a href="#" class="btn btn-primary btn-sm" style="width: 100%;">
+                                    <i class="fas fa-play"></i> Continue
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Course 3 -->
+                        <div class="course-card" style="box-shadow: none; border: 1px solid var(--gray-200);">
+                            <div class="course-thumbnail" style="height: 140px;">
+                                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=200&fit=crop" alt="UI/UX">
+                            </div>
+                            <div class="course-content">
+                                <span class="course-category">Design</span>
+                                <h3 class="course-title">UI/UX Design Masterclass</h3>
+                                <div class="course-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 25%;"></div>
+                                    </div>
+                                    <span class="progress-text">25% Complete</span>
+                                </div>
+                                <a href="#" class="btn btn-primary btn-sm" style="width: 100%;">
+                                    <i class="fas fa-play"></i> Continue
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity & Upcoming -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                <!-- Recent Activity -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 style="font-size: 1.25rem; font-weight: 600;">Recent Activity</h2>
+                    </div>
+                    <div class="card-body" style="padding: 0;">
+                        <div style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 40px; height: 40px; background: rgba(99, 102, 241, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary-color);">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div>
+                                <p style="font-weight: 500; margin-bottom: 0.25rem;">Watched "Introduction to JavaScript"</p>
+                                <span style="font-size: 0.85rem; color: var(--gray-500);">2 hours ago</span>
+                            </div>
+                        </div>
+                        <div style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 40px; height: 40px; background: rgba(16, 185, 129, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--success-color);">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <p style="font-weight: 500; margin-bottom: 0.25rem;">Completed Quiz: HTML Basics</p>
+                                <span style="font-size: 0.85rem; color: var(--gray-500);">5 hours ago</span>
+                            </div>
+                        </div>
+                        <div style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 40px; height: 40px; background: rgba(245, 158, 11, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--warning-color);">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div>
+                                <p style="font-weight: 500; margin-bottom: 0.25rem;">Earned Certificate: CSS Fundamentals</p>
+                                <span style="font-size: 0.85rem; color: var(--gray-500);">Yesterday</span>
+                            </div>
+                        </div>
+                        <div style="padding: 1rem 1.5rem; display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 40px; height: 40px; background: rgba(14, 165, 233, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--secondary-color);">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div>
+                                <p style="font-weight: 500; margin-bottom: 0.25rem;">Enrolled in "React Complete Guide"</p>
+                                <span style="font-size: 0.85rem; color: var(--gray-500);">2 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Deadlines -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 style="font-size: 1.25rem; font-weight: 600;">Upcoming Deadlines</h2>
+                    </div>
+                    <div class="card-body" style="padding: 0;">
+                        <div style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <p style="font-weight: 500; margin-bottom: 0.25rem;">JavaScript Assignment</p>
+                                <span style="font-size: 0.85rem; color: var(--gray-500);">Web Development Course</span>
+                            </div>
+                            <span class="status-badge pending">Due in 2 days</span>
+                        </div>
+                        <div style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <p style="font-weight: 500; margin-bottom: 0.25rem;">Python Project</p>
+                                <span style="font-size: 0.85rem; color: var(--gray-500);">Data Science Course</span>
+                            </div>
+                            <span class="status-badge active">Due in 5 days</span>
+                        </div>
+                        <div style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <p style="font-weight: 500; margin-bottom: 0.25rem;">Final Quiz</p>
+                                <span style="font-size: 0.85rem; color: var(--gray-500);">CSS Masterclass</span>
+                            </div>
+                            <span class="status-badge active">Due in 1 week</span>
+                        </div>
+                        <div style="padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <p style="font-weight: 500; margin-bottom: 0.25rem;">Design Portfolio</p>
+                                <span style="font-size: 0.85rem; color: var(--gray-500);">UI/UX Course</span>
+                            </div>
+                            <span class="status-badge active">Due in 2 weeks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Check if user is logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const userName = localStorage.getItem('userName') || 'Student';
+            
+            if (!isLoggedIn) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            document.getElementById('userName').textContent = userName;
+            document.getElementById('userAvatar').textContent = userName.substring(0, 2).toUpperCase();
+        });
+
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userName');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userRole');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
