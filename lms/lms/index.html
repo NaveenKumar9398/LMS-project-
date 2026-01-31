@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnHub - Modern Learning Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">
+                <i class="fas fa-graduation-cap"></i>
+             SMart LearN
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="videos.html" class="nav-link">Courses</a></li>
+                <li><a href="certificates.html" class="nav-link">Certificates</a></li>
+                <li><a href="#" class="nav-link">About</a></li>
+                <li><a href="#" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <a href="login.html" class="btn btn-outline">Sign In</a>
+                <a href="register.html" class="btn btn-primary">Get Started</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Transform Your Future with Online Learning</h1>
+                    <p>Access thousands of courses from expert instructors. Learn new skills, earn certificates, and advance your career with our comprehensive learning platform.</p>
+                    <div class="hero-buttons">
+                        <a href="register.html" class="btn btn-primary btn-lg">
+                            <i class="fas fa-rocket"></i>
+                            Start Learning Free
+                        </a>
+                        <a href="videos.html" class="btn btn-outline btn-lg">
+                            <i class="fas fa-play-circle"></i>
+                            Browse Courses
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop" alt="Students Learning">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section style="padding: 4rem 0; background: white;">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon primary">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>50,000+</h3>
+                        <p>Active Students</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon secondary">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>1,200+</h3>
+                        <p>Video Courses</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon success">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>25,000+</h3>
+                        <p>Certificates Issued</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon warning">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>4.8/5</h3>
+                        <p>Average Rating</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Courses -->
+    <section style="padding: 4rem 0;">
+        <div class="container">
+            <div class="page-header text-center" style="margin-bottom: 3rem;">
+                <h2 class="page-title">Featured Courses</h2>
+                <p class="page-subtitle">Explore our most popular courses</p>
+            </div>
+            <div class="courses-grid">
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <div class="course-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=250&fit=crop" alt="Web Development">
+                        <span class="course-badge">Bestseller</span>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Web Development</span>
+                        <h3 class="course-title">Complete Web Development Bootcamp 2024</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 42 hours</span>
+                            <span><i class="fas fa-signal"></i> Beginner</span>
+                            <span><i class="fas fa-star" style="color: #f59e0b;"></i> 4.9</span>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <div class="course-instructor">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Instructor" class="instructor-avatar">
+                            <span class="instructor-name">John Smith</span>
+                        </div>
+                        <span class="course-price">$49.99</span>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <div class="course-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=250&fit=crop" alt="Data Science">
+                        <span class="course-badge">New</span>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Data Science</span>
+                        <h3 class="course-title">Python for Data Science & Machine Learning</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 36 hours</span>
+                            <span><i class="fas fa-signal"></i> Intermediate</span>
+                            <span><i class="fas fa-star" style="color: #f59e0b;"></i> 4.8</span>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <div class="course-instructor">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Instructor" class="instructor-avatar">
+                            <span class="instructor-name">Sarah Johnson</span>
+                        </div>
+                        <span class="course-price">$59.99</span>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="course-card">
+                    <div class="course-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=250&fit=crop" alt="UI/UX Design">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Design</span>
+                        <h3 class="course-title">UI/UX Design Masterclass: From Zero to Hero</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 28 hours</span>
+                            <span><i class="fas fa-signal"></i> All Levels</span>
+                            <span><i class="fas fa-star" style="color: #f59e0b;"></i> 4.7</span>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <div class="course-instructor">
+                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Instructor" class="instructor-avatar">
+                            <span class="instructor-name">Mike Chen</span>
+                        </div>
+                        <span class="course-price">$39.99</span>
+                    </div>
+                </div>
+
+                <!-- Course 4 -->
+                <div class="course-card">
+                    <div class="course-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop" alt="Digital Marketing">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Marketing</span>
+                        <h3 class="course-title">Complete Digital Marketing Course 2024</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 32 hours</span>
+                            <span><i class="fas fa-signal"></i> Beginner</span>
+                            <span><i class="fas fa-star" style="color: #f59e0b;"></i> 4.6</span>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <div class="course-instructor">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Instructor" class="instructor-avatar">
+                            <span class="instructor-name">Emily Brown</span>
+                        </div>
+                        <span class="course-price">$44.99</span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="videos.html" class="btn btn-primary btn-lg">
+                    View All Courses
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section style="padding: 4rem 0; background: white;">
+        <div class="container">
+            <div class="page-header text-center" style="margin-bottom: 3rem;">
+                <h2 class="page-title">Why Choose LearnHub?</h2>
+                <p class="page-subtitle">Everything you need to succeed in your learning journey</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card" style="flex-direction: column; text-align: center; padding: 2rem;">
+                    <div class="stat-icon primary" style="margin-bottom: 1rem;">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">HD Video Courses</h3>
+                    <p style="color: var(--gray-500);">High-quality video content with lifetime access</p>
+                </div>
+                <div class="stat-card" style="flex-direction: column; text-align: center; padding: 2rem;">
+                    <div class="stat-icon secondary" style="margin-bottom: 1rem;">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Verified Certificates</h3>
+                    <p style="color: var(--gray-500);">Earn certificates to showcase your skills</p>
+                </div>
+                <div class="stat-card" style="flex-direction: column; text-align: center; padding: 2rem;">
+                    <div class="stat-icon success" style="margin-bottom: 1rem;">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Expert Instructors</h3>
+                    <p style="color: var(--gray-500);">Learn from industry professionals</p>
+                </div>
+                <div class="stat-card" style="flex-direction: column; text-align: center; padding: 2rem;">
+                    <div class="stat-icon warning" style="margin-bottom: 1rem;">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Learn Anywhere</h3>
+                    <p style="color: var(--gray-500);">Access courses on any device, anytime</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="padding: 4rem 0; background: var(--gradient-primary); color: white; text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Ready to Start Learning?</h2>
+            <p style="font-size: 1.15rem; opacity: 0.9; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Join thousands of students who are already learning and growing with LearnHub.
+            </p>
+            <a href="register.html" class="btn btn-lg" style="background: white; color: var(--primary-color);">
+                <i class="fas fa-user-plus"></i>
+                Create Free Account
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="footer-brand">
+                        <i class="fas fa-graduation-cap"></i>
+                         SMart LearN
+                    </a>
+                    <p class="footer-description">
+                        Empowering learners worldwide with high-quality online education. Transform your career with our comprehensive courses.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="videos.html">Courses</a></li>
+                        <li><a href="certificates.html">Certificates</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Data Science</a></li>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">Marketing</a></li>
+                        <li><a href="#">Business</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024  SMart LearN. All rights reserved.</p>
+                <p>Made with <i class="fas fa-heart" style="color: #ef4444;"></i> for learners worldwide</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

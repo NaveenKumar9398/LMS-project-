@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Courses - LearnHub LMS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">
+                <i class="fas fa-graduation-cap"></i>
+                LearnHub
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="videos.html" class="nav-link active">My Courses</a></li>
+                <li><a href="video-upload.html" class="nav-link">Upload</a></li>
+                <li><a href="certificates.html" class="nav-link">Certificates</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <div class="search-bar" style="margin-right: 1rem;">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search courses...">
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar" id="userAvatar">JS</div>
+                    <div class="user-dropdown">
+                        <a href="students.html"><i class="fas fa-user"></i> My Profile</a>
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <p class="sidebar-menu-title">Main Menu</p>
+                <a href="dashboard.html" class="sidebar-link">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+                <a href="videos.html" class="sidebar-link active">
+                    <i class="fas fa-play-circle"></i>
+                    My Courses
+                </a>
+                <a href="video-upload.html" class="sidebar-link">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    Upload Video
+                </a>
+                <a href="certificates.html" class="sidebar-link">
+                    <i class="fas fa-certificate"></i>
+                    Certificates
+                </a>
+
+                <p class="sidebar-menu-title">Management</p>
+                <a href="students.html" class="sidebar-link">
+                    <i class="fas fa-users"></i>
+                    Students
+                </a>
+                <a href="#" class="sidebar-link">
+                    <i class="fas fa-book"></i>
+                    Courses
+                </a>
+                <a href="#" class="sidebar-link">
+                    <i class="fas fa-chart-bar"></i>
+                    Analytics
+                </a>
+
+                <p class="sidebar-menu-title">Account</p>
+                <a href="students.html" class="sidebar-link">
+                    <i class="fas fa-user-cog"></i>
+                    Profile Settings
+                </a>
+                <a href="#" class="sidebar-link">
+                    <i class="fas fa-question-circle"></i>
+                    Help Center
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header flex-between">
+                <div>
+                    <h1 class="page-title">My Courses</h1>
+                    <p class="page-subtitle">Browse and watch all your enrolled courses</p>
+                </div>
+                <a href="video-upload.html" class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Upload New Video
+                </a>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters">
+                <button class="filter-btn active">All Courses</button>
+                <button class="filter-btn">In Progress</button>
+                <button class="filter-btn">Completed</button>
+                <button class="filter-btn">Saved</button>
+                <div style="margin-left: auto;">
+                    <select class="form-control" style="width: 200px; padding: 0.5rem 1rem;">
+                        <option>Sort by: Recent</option>
+                        <option>Sort by: Progress</option>
+                        <option>Sort by: Name</option>
+                        <option>Sort by: Duration</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Video Grid -->
+            <div class="courses-grid">
+                <!-- Video 1 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=250&fit=crop" alt="Web Development">
+                        <div class="video-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <span class="video-duration">42:15:00</span>
+                    </div>
+                    <div class="video-content">
+                        <span class="course-category">Web Development</span>
+                        <h3 class="video-title">Complete Web Development Bootcamp 2024</h3>
+                        <div class="course-progress" style="margin: 1rem 0;">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%;"></div>
+                            </div>
+                            <span class="progress-text">65% Complete • 28 of 42 lessons</span>
+                        </div>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 42 hours</span>
+                            <span><i class="fas fa-star" style="color: #f59e0b;"></i> 4.9</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=250&fit=crop" alt="Python">
+                        <div class="video-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <span class="video-duration">36:45:00</span>
+                    </div>
+                    <div class="video-content">
+                        <span class="course-category">Data Science</span>
+                        <h3 class="video-title">Python for Data Science & Machine Learning</h3>
+                        <div class="course-progress" style="margin: 1rem 0;">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 40%;"></div>
+                            </div>
+                            <span class="progress-text">40% Complete • 16 of 40 lessons</span>
+                        </div>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 36 hours</span>
+                            <span><i class="fas fa-star" style="color: #f59e0b;"></i> 4.8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=250&fit=crop" alt="UI/UX">
+                        <div class="video-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <span class="video-duration">28:30:00</span>
+                    </div>
+                    <div class="video-content">
+                        <span class="course-category">Design</span>
+                        <h3 class="video-title">UI/UX Design Masterclass: From Zero to Hero</h3>
+                        <div class="course-progress" style="margin: 1rem 0;">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 25%;"></div>
+                            </div>
+                            <span class="progress-text">25% Complete • 8 of 32 lessons</span>
+                        </div>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 28 hours</span>
+                            <span><i class="fas fa-star" style="color: #f59e0b;"></i> 4.7</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 4 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop" alt="Marketing">
+                        <div class="video-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <span class="video-duration">32:00:00</span>
+                    </div>
+                    <div class="video-content">
+                        <span class="course-category">Marketing</span>
+                        <h3 class="video-title">Complete Digital Marketing Course 2024</h3>
+                        <div class="course-progress" style="margin: 1rem 0;">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                            <span class="progress-text">100% Complete • Finished!</span>
+                        </div>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 32 hours</span>
+                            <span><i class="fas fa-star" style="color: #f59e0b;"></i> 4.6</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 5 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=400&h=250&fit=crop" alt="React">
+                        <div class="video-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <span class="video-duration">24:00:00</span>
+                    </div>
+                    <div class="video-content">
+                        <span class="course-category">Web Development</span>
+                        <h3 class="video-title">React - The Complete Guide 2024</h3>
+                        <div class="course-progress" style="margin: 1rem 0;">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 10%;"></div>
+                            </div>
+                            <span class="progress-text">10% Complete • 3 of 30 lessons</span>
+                        </div>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 24 hours</span>
+                            <span><i class="fas fa-star" style="color: #f59e0b;"></i> 4.9</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 6 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=250&fit=crop" alt="Business">
+                        <div class="video-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <span class="video-duration">18:30:00</span>
+                    </div>
+                    <div class="video-content">
+                        <span class="course-category">Business</span>
+                        <h3 class="video-title">Entrepreneurship: How to Start a Business</h3>
+                        <div class="course-progress" style="margin: 1rem 0;">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                            <span class="progress-text">100% Complete • Finished!</span>
+                        </div>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 18 hours</span>
+                            <span><i class="fas fa-star" style="color: #f59e0b;"></i> 4.5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 7 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=400&h=250&fit=crop" alt="Node.js">
+                        <div class="video-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <span class="video-duration">20:00:00</span>
+                    </div>
+                    <div class="video-content">
+                        <span class="course-category">Web Development</span>
+                        <h3 class="video-title">Node.js: The Complete Backend Guide</h3>
+                        <div class="course-progress" style="margin: 1rem 0;">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 55%;"></div>
+                            </div>
+                            <span class="progress-text">55% Complete • 14 of 25 lessons</span>
+                        </div>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 20 hours</span>
+                            <span><i class="fas fa-star" style="color: #f59e0b;"></i> 4.8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 8 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop" alt="SQL">
+                        <div class="video-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <span class="video-duration">15:00:00</span>
+                    </div>
+                    <div class="video-content">
+                        <span class="course-category">Database</span>
+                        <h3 class="video-title">SQL & Database Design for Beginners</h3>
+                        <div class="course-progress" style="margin: 1rem 0;">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%;"></div>
+                            </div>
+                            <span class="progress-text">80% Complete • 20 of 25 lessons</span>
+                        </div>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 15 hours</span>
+                            <span><i class="fas fa-star" style="color: #f59e0b;"></i> 4.7</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 9 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop" alt="Photography">
+                        <div class="video-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <span class="video-duration">12:00:00</span>
+                    </div>
+                    <div class="video-content">
+                        <span class="course-category">Photography</span>
+                        <h3 class="video-title">Photography Masterclass: Complete Guide</h3>
+                        <div class="course-progress" style="margin: 1rem 0;">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                            <span class="progress-text">100% Complete • Finished!</span>
+                        </div>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 12 hours</span>
+                            <span><i class="fas fa-star" style="color: #f59e0b;"></i> 4.9</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="pagination-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Check if user is logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const userName = localStorage.getItem('userName') || 'User';
+            
+            if (!isLoggedIn) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            document.getElementById('userAvatar').textContent = userName.substring(0, 2).toUpperCase();
+        });
+
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

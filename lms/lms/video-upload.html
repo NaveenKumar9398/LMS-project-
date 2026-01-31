@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Video - LearnHub LMS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">
+                <i class="fas fa-graduation-cap"></i>
+                LearnHub
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="videos.html" class="nav-link">My Courses</a></li>
+                <li><a href="video-upload.html" class="nav-link active">Upload</a></li>
+                <li><a href="certificates.html" class="nav-link">Certificates</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <div class="user-menu">
+                    <div class="user-avatar" id="userAvatar">JS</div>
+                    <div class="user-dropdown">
+                        <a href="students.html"><i class="fas fa-user"></i> My Profile</a>
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <p class="sidebar-menu-title">Main Menu</p>
+                <a href="dashboard.html" class="sidebar-link">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+                <a href="videos.html" class="sidebar-link">
+                    <i class="fas fa-play-circle"></i>
+                    My Courses
+                </a>
+                <a href="video-upload.html" class="sidebar-link active">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    Upload Video
+                </a>
+                <a href="certificates.html" class="sidebar-link">
+                    <i class="fas fa-certificate"></i>
+                    Certificates
+                </a>
+
+                <p class="sidebar-menu-title">Management</p>
+                <a href="students.html" class="sidebar-link">
+                    <i class="fas fa-users"></i>
+                    Students
+                </a>
+                <a href="#" class="sidebar-link">
+                    <i class="fas fa-book"></i>
+                    Courses
+                </a>
+                <a href="#" class="sidebar-link">
+                    <i class="fas fa-chart-bar"></i>
+                    Analytics
+                </a>
+
+                <p class="sidebar-menu-title">Account</p>
+                <a href="students.html" class="sidebar-link">
+                    <i class="fas fa-user-cog"></i>
+                    Profile Settings
+                </a>
+                <a href="#" class="sidebar-link">
+                    <i class="fas fa-question-circle"></i>
+                    Help Center
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">Upload Video</h1>
+                <p class="page-subtitle">Create and upload new video content for your courses</p>
+            </div>
+
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-body">
+                    <form id="uploadForm">
+                        <!-- Upload Area -->
+                        <div class="upload-area" id="uploadArea">
+                            <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                            <h3 class="upload-title">Drag & drop your video here</h3>
+                            <p class="upload-text">or click to browse from your computer</p>
+                            <p class="upload-formats">Supported formats: MP4, MOV, AVI, MKV (Max 2GB)</p>
+                            <input type="file" id="videoFile" accept="video/*" style="display: none;">
+                        </div>
+
+                        <!-- Upload Progress (Hidden by default) -->
+                        <div id="uploadProgress" style="display: none; margin-top: 2rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="width: 60px; height: 60px; background: var(--gray-200); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-video" style="font-size: 1.5rem; color: var(--primary-color);"></i>
+                                </div>
+                                <div style="flex: 1;">
+                                    <p id="fileName" style="font-weight: 500; margin-bottom: 0.25rem;">video.mp4</p>
+                                    <p id="fileSize" style="font-size: 0.85rem; color: var(--gray-500);">25 MB</p>
+                                </div>
+                                <button type="button" class="btn btn-sm btn-danger" onclick="removeFile()">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="progress-bar" style="height: 8px;">
+                                <div class="progress-fill" id="progressBar" style="width: 0%;"></div>
+                            </div>
+                            <p id="progressText" style="font-size: 0.85rem; color: var(--gray-500); margin-top: 0.5rem;">Uploading... 0%</p>
+                        </div>
+
+                        <!-- Video Details -->
+                        <div style="margin-top: 2rem;">
+                            <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem;">Video Details</h3>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="videoTitle">Video Title *</label>
+                                <input type="text" class="form-control" id="videoTitle" placeholder="Enter video title" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="videoDescription">Description</label>
+                                <textarea class="form-control" id="videoDescription" rows="4" placeholder="Describe what this video is about..."></textarea>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                                <div class="form-group">
+                                    <label class="form-label" for="courseCategory">Category *</label>
+                                    <select class="form-control" id="courseCategory" required>
+                                        <option value="">Select category</option>
+                                        <option value="web-development">Web Development</option>
+                                        <option value="data-science">Data Science</option>
+                                        <option value="design">Design</option>
+                                        <option value="marketing">Marketing</option>
+                                        <option value="business">Business</option>
+                                        <option value="photography">Photography</option>
+                                        <option value="music">Music</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" for="courseLevel">Level</label>
+                                    <select class="form-control" id="courseLevel">
+                                        <option value="beginner">Beginner</option>
+                                        <option value="intermediate">Intermediate</option>
+                                        <option value="advanced">Advanced</option>
+                                        <option value="all-levels">All Levels</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="videoTags">Tags</label>
+                                <input type="text" class="form-control" id="videoTags" placeholder="Enter tags separated by commas (e.g., javascript, react, web)">
+                                <span class="form-text">Add tags to help students find your content</span>
+                            </div>
+
+                            <!-- Thumbnail Upload -->
+                            <div class="form-group">
+                                <label class="form-label">Thumbnail</label>
+                                <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                    <div id="thumbnailPreview" style="width: 200px; height: 120px; background: var(--gray-200); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                        <i class="fas fa-image" style="font-size: 2rem; color: var(--gray-400);"></i>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('thumbnailFile').click()">
+                                            <i class="fas fa-upload"></i>
+                                            Upload Thumbnail
+                                        </button>
+                                        <input type="file" id="thumbnailFile" accept="image/*" style="display: none;">
+                                        <p class="form-text" style="margin-top: 0.5rem;">Recommended: 1280x720px (16:9 ratio)</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Visibility -->
+                            <div class="form-group">
+                                <label class="form-label">Visibility</label>
+                                <div style="display: flex; gap: 1.5rem;">
+                                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                        <input type="radio" name="visibility" value="public" checked style="accent-color: var(--primary-color);">
+                                        <span>Public</span>
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                        <input type="radio" name="visibility" value="private" style="accent-color: var(--primary-color);">
+                                        <span>Private</span>
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                        <input type="radio" name="visibility" value="unlisted" style="accent-color: var(--primary-color);">
+                                        <span>Unlisted</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Buttons -->
+                        <div style="display: flex; gap: 1rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--gray-200);">
+                            <button type="button" class="btn btn-outline" onclick="saveDraft()">
+                                <i class="fas fa-save"></i>
+                                Save as Draft
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-upload"></i>
+                                Publish Video
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Recent Uploads -->
+            <div class="card">
+                <div class="card-header flex-between">
+                    <h2 style="font-size: 1.25rem; font-weight: 600;">Recent Uploads</h2>
+                    <a href="videos.html" class="btn btn-sm btn-outline">View All</a>
+                </div>
+                <div class="card-body" style="padding: 0;">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Video</th>
+                                <th>Category</th>
+                                <th>Views</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <div style="width: 80px; height: 45px; background: var(--gray-200); border-radius: 4px; overflow: hidden;">
+                                            <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=100&h=60&fit=crop" alt="Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="table-user-info">
+                                            <h4>Introduction to JavaScript</h4>
+                                            <p>12:45</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Web Development</td>
+                                <td>1,245</td>
+                                <td><span class="status-badge active">Published</span></td>
+                                <td>Jan 28, 2024</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" style="margin-right: 0.5rem;"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <div style="width: 80px; height: 45px; background: var(--gray-200); border-radius: 4px; overflow: hidden;">
+                                            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=100&h=60&fit=crop" alt="Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="table-user-info">
+                                            <h4>Python Basics for Beginners</h4>
+                                            <p>18:32</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Data Science</td>
+                                <td>856</td>
+                                <td><span class="status-badge active">Published</span></td>
+                                <td>Jan 25, 2024</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" style="margin-right: 0.5rem;"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <div style="width: 80px; height: 45px; background: var(--gray-200); border-radius: 4px; overflow: hidden;">
+                                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=100&h=60&fit=crop" alt="Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="table-user-info">
+                                            <h4>UI Design Principles</h4>
+                                            <p>24:15</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Design</td>
+                                <td>432</td>
+                                <td><span class="status-badge pending">Processing</span></td>
+                                <td>Jan 22, 2024</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" style="margin-right: 0.5rem;"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Check if user is logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const userName = localStorage.getItem('userName') || 'User';
+            
+            if (!isLoggedIn) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            document.getElementById('userAvatar').textContent = userName.substring(0, 2).toUpperCase();
+        });
+
+        // File upload handling
+        const uploadArea = document.getElementById('uploadArea');
+        const videoFileInput = document.getElementById('videoFile');
+        const uploadProgress = document.getElementById('uploadProgress');
+
+        uploadArea.addEventListener('click', () => videoFileInput.click());
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+
+        videoFileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+
+        function handleFile(file) {
+            if (!file.type.startsWith('video/')) {
+                alert('Please select a video file');
+                return;
+            }
+
+            document.getElementById('fileName').textContent = file.name;
+            document.getElementById('fileSize').textContent = formatFileSize(file.size);
+            uploadArea.style.display = 'none';
+            uploadProgress.style.display = 'block';
+
+            // Simulate upload progress
+            simulateUpload();
+        }
+
+        function simulateUpload() {
+            let progress = 0;
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    progressText.textContent = 'Upload complete!';
+                    progressText.style.color = 'var(--success-color)';
+                }
+                progressBar.style.width = progress + '%';
+                if (progress < 100) {
+                    progressText.textContent = `Uploading... ${Math.round(progress)}%`;
+                }
+            }, 500);
+        }
+
+        function removeFile() {
+            uploadArea.style.display = 'block';
+            uploadProgress.style.display = 'none';
+            videoFileInput.value = '';
+            document.getElementById('progressBar').style.width = '0%';
+            document.getElementById('progressText').textContent = 'Uploading... 0%';
+            document.getElementById('progressText').style.color = 'var(--gray-500)';
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Thumbnail preview
+        document.getElementById('thumbnailFile').addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const preview = document.getElementById('thumbnailPreview');
+                    preview.innerHTML = `<img src="${event.target.result}" style="width: 100%; height: 100%; object-fit: cover;">`;
+                };
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+
+        // Form submission
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Video published successfully!');
+            window.location.href = 'videos.html';
+        });
+
+        function saveDraft() {
+            alert('Video saved as draft!');
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
